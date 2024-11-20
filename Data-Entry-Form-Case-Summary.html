@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+  </head>
+  <body>
+  <section class="hero is-primary is-bold">
+     <div class="hero-body"> 
+     <!-- <div class="container"> -->
+        <h4 class="title">Data Entry Form Case Summary Form Submission</h4>
+      </div>
+    </div>
+  </section>
+ 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form with Bootstrap</title>
+  <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+  
+  
+  <!-- New code header response-->
+  <base target="_top">
+  <!-- Include Google Fonts and Font Awesome for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Include SweetAlert2 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  -->
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+    /* Section Headers */
+    .section-header {
+      font-size: 1.5em;
+      margin: 30px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #2980b9;
+      color: #2980b9;
+      grid-column: 1 / -1;
+    }
+    /* Form Styles of drop box */
+    .form-group_dropbox label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      color: #34495e;
+    }
+    .form-group_dropbox label i {
+      margin-right: 8px;
+      color: #2980b9;
+    }
+    /* form styles */
+    form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 30px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      color: #34495e;
+    }
+    .form-group label i {
+      margin-right: 8px;
+      color: #2980b9;
+    }
+    .form-group input,
+    .form-group select {
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+      font-size: 1em;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #2980b9;
+      outline: none;
+      box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+    }
+    /* Checkbox Styles */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      grid-column: 1 / -1;
+    }
+    .checkbox-group input {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    .checkbox-group label {
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #34495e;
+    }
+    .checkbox-group label i {
+      margin-right: 8px;
+      color: #2980b9;
+    }
+    /* Submit Button */
+    .submit-btn {
+      grid-column: 2 / 3;
+      padding: 15px;
+      background-color: #2980b9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 20px;
+    }
+    .submit-btn:hover {
+      background-color: #1f6391;
+      transform: translateY(-2px);
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+      form {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .submit-btn {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      form {
+        grid-template-columns: 1fr;
+      }
+      .submit-btn {
+        grid-column: 1 / -1;
+      }
+    }
+   
+    
+
+  </style>
+  
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="form-container">
+       <!-- <h4 class="text-center mb-4">Case Summary Form Submission </h4> -->
+        <form id="submit-to-google-sheet">
+
+<!-- Start Code -->
+          <!-- Case Type -->
+          <div class="form-group_dropbox" >
+            <label for="loc">Select Case Type:</label>
+            <select class="form-control" name="Case Type" id="Case Type" required>
+              <option value=""disabled selected hidden>Select an option...</option>
+              <option value="Technical Problem">Technical Problem</option>
+              <option value="Implementation">Implementation</option>
+            </select>
+          </div>
+
+ 
+
+ <!-- Product Type -->
+ <div class="form-group_dropbox">
+  <label for="loc">Select Product:</label>
+  <select class="form-control" name="Product" id="Product" required>
+    <option value="" disabled selected hidden>Select an option...</option>
+    <option value="PAM">PAM</option>
+    <option value="Remote Access">Remote Access</option>
+    <option value="Credential Providers">Credential Providers</option>
+  </select>
+</div>
+
+ <!-- Component Type -->
+ <div class="form-group_dropbox">
+  <label for="loc">Select Components:</label>
+  <select class="form-control" name="Components" id="Components" required>
+    <option value="" disabled selected hidden>Select an option...</option>
+    <option value="CCP">CCP</option>
+    <option value="Connector">Connector</option>
+    <option value="Customize Components">Customize Components</option>
+    <option value="Disaster Recovery Vault">Disaster Recovery Vault</option>
+    <option value="Discovery and Account Feed">Discovery and Account Feed</option>
+    <option value="Event Notification Engine">Event Notification Engine</option>
+    <option value="Export Vault Data">Export Vault Data</option>
+    <option value="Plug-in Generator Utility (PGU)">Plug-in Generator Utility (PGU)</option>
+    <option value="PSM">PSM</option>
+    <option value="PSMP">PSMP</option>
+    <option value="PTA">PTA</option>
+    <option value="PVWA">PVWA</option>    
+    <option value="Vault Server">Vault Server</option>
+
+  </select>
+</div>
+
+ 
+ <!-- testing-->
+
+
+<!-- testing-->
+
+<!-- Case Subject-->
+          <div class="form-group_dropbox">
+            <label for="Case Subject">Case Subject:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="Case Subject"
+              id="Case Subject"
+              placeholder="Enter your case subject"
+              required                  
+            />            
+            </div>
+
+<!-- Case Summary -->
+            <div class="form-group">
+              <label for="loc">Case Summary:</label>
+              <textarea
+                class="form-control"
+                name="Case Summary"
+                id="Case Summary"
+                placeholder="Enter your case summary"
+                required
+              ></textarea>
+            </div>
+<!-- Priority -->
+<div class="form-group_dropbox">
+  <label for="loc">Priority:</label>
+  <select class="form-control" name="Priority" id="Priority" required>
+    <option value="" disabled selected hidden>Select an option...</option>
+    <option value="Minor">Minor</option>
+    <option value="Moderate">Moderate</option>
+    <option value="Serious">Serious</option>
+    <option value="Critical">Critical</option>
+  </select>
+</div>
+ <!-- Customer name Bank -->
+ <div class="form-group_dropbox">
+  <label for="loc">Customer Name:</label>
+  <select class="form-control" name="Bank" id="Bank" required>
+    <option value="" disabled selected hidden>Select an option...</option>
+    <option value="ABA Bank">ABA Bank</option>
+    <option value="AEON Bank">AEON Bank</option>
+    <option value="AMRET MFI">AMRET Bank</option>
+    <option value="APD Bank">APD Bank</option>
+    <option value="BIC Bank">BIC Bank</option>
+    <option value="CIMB Bank">CIMB Bank</option>
+    <option value="CMCB Bank">CMCB Bank</option>
+    <option value="DGB Bank">DGB Bank</option>
+    <option value="FTB Bank">FTB Bank</option>
+    <option value="HATTHA Bank">HATTHA Bank</option>
+    <option value="JTRUST Bank">JTRUST Bank</option>
+    <option value="PHILLIP Bank">PHILLIP Bank</option>
+    <option value="PRINCE Bank">PRINCE Bank</option>
+    <option value="SATHAPANA Bank">SATHAPANA Bank</option>
+    <option value="SBILH Bank">SBILH Bank</option>
+    <option value="WING Bank">WING Bank</option>
+    <option value="WOORI Bank">WOORI Bank</option>
+  </select>
+</div>
+
+          <!-- Raised Date-->
+          
+          <div class="form-group">
+            <label for="Raised Date"><i class="fas fa-calendar-alt"></i>Raised Date:</label>
+            <input
+              class="form-control"
+              type="date"
+              name="Raised Date"
+              id="Raised Date"
+              placeholder="Raised Date"
+              required
+            />
+          
+
+           <!-- Closed Date-->
+          </div>
+          <div class="form-group">
+            <label for="Closed Date"><i class="fas fa-calendar-alt"></i>Closed Date:</label>
+            <input
+              class="form-control"
+              type="date"
+              name="Closed Date"
+              id="Closed Date"
+              placeholder="Closed Date"
+              
+            />
+          </div>
+        
+ <!-- Escalation -->
+ <div class="form-group_dropbox">
+  <label for="loc" >Escalation:</label>
+  <select class="form-control" name="Escalation" id="Escalation" required>
+    <!-- <option value="" disabled selected hidden>Select an option...</option> -->
+    <option value="NP-TEAM">NP-TEAM</option>
+    <option value="CYBERARK">CYBERARK</option>
+    <option value="MTECH">MTECH</option>
+    <option value="NETPOLEONS">NETPOLEONS</option>
+    <option value="ZEROFOX">ZEROFOX</option>
+  </select>
+</div>
+
+           <!-- Status -->
+           <div class="form-group_dropbox">
+            <label for="loc">Status:</label>
+            <select class="form-control" name="Status" id="Status" required>
+             
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Completed">Completed</option>
+              <option value="Closed">Closed</option>
+              <option value="Waiting Partner">Waiting Partner</option>
+              <option value="Waiting Customer">Waiting Customer</option>
+              <option value="Closed - No update">Closed - No update</option>
+              
+            </select>
+          </div>
+
+          <!-- Handle By -->
+          <div class="form-group_dropbox">
+            <label for="loc">Handle By:</label>
+            <select class="form-control" name="Handle By" id="Handle By" required>
+              <option value="" disabled selected hidden>Choose...</option>
+              <option value="Dalin EM">Dalin EM</option>
+              <option value="Leangheng HORM">Leangheng HORM</option>              
+              <option value="Sarom SAM">Sarom SAM</option>
+              <option value="Sreypich BO">Sreypich BO</option>
+              <option value="Visotthikun YEANG">Visotthikun YEANG</option>            
+            </select>
+          </div>
+
+ <!-- Solutions -->
+          <div class="form-group">
+            <label for="loc">Solutions:</label>
+            <textarea
+              class="form-control"
+              name="Solutions"
+              id="Solutions"
+              placeholder="Solutions"
+              
+          
+            ></textarea>
+            </div>
+
+<!-- Check Box-->
+          <div class="checkbox-group">
+            <input class="form-check-input" type="checkbox" id="ex" required />
+            <label class="form-check-label" for="ex"
+              >By checking this box I certify that I am agree with the data
+              input above are correctly.</a>
+            </label>
+          </div>
+         <!-- Submit Button 
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>-->
+          <button type="submit" class="submit-btn">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const scriptURL =                   
+    //My testing
+     // "https://script.google.com/macros/s/AKfycbz-cTny_iwIM_GmG18yTrozgnfnrHzOlvTrJ40jDx-AlEb-fbDmwDf0D9C6kRlKfb5x/exec";
+
+    //Production 
+    "https://script.google.com/macros/s/AKfycbwt5UQArOZha-PYao3UjZbOgIl-GEji87x8FqyEr__JfBJYeUsOm4gCV-kxbCSxzsvZPA/exec";
+    
+      const form = document.forms["submit-to-google-sheet"];
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var formData = new FormData(form);
+        var ex = document.getElementById("ex").checked;
+
+        if (ex) {
+          formData.append("ex", "Yes");
+        } else {
+          formData.append("ex", "No");
+        }
+
+        fetch(scriptURL, { method: "POST", body: formData })
+          .then((response) => {
+            swal("Done", "Submitted Successfully.", "success");
+          })
+          .catch((error) => {
+            swal("Error", "Something went wrong. please try again!", "error");
+          });
+      });
+    </script>
+  </body>
+</html>
