@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="370" viewBox="0 0 800 370">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-size: 286.667px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: Tahoma;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #0f75bc;
+      }
+
+      .cls-3 {
+        font-size: 60px;
+      }
+    </style>
+  </defs>
+  <text id="S" class="cls-1" x="343" y="274">S</text>
+  <text id="c" class="cls-1" x="593" y="272">c</text>
+  <text id="e" class="cls-1" x="465" y="272">e</text>
+  <text id="P" class="cls-2" x="209" y="274">P</text>
+  <text id="c-2" data-name="c" class="cls-1" transform="matrix(-0.005, 0.7, -0.558, -0.006, 644.761, 40.224)">c</text>
+  <text id="N" class="cls-2" transform="translate(21 277.134) scale(1 1.035)">N</text>
+  <text id="Premium_IT_Security" data-name="Premium IT Security" class="cls-3" transform="translate(34.557 331.399) scale(1.091 1)">Premium IT Security</text>
+</svg>
